@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 
 export class WordComponent {
-
+    en = 'Hello';
+    vn = 'Xin chào';
 }
