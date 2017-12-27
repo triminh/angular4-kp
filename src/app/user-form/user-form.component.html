@@ -1,2 +1,3 @@
-<input placeholder="Enter username" [(ngModel)]="name">
+<input placeholder="Enter username" [(ngModel)]="name" #txtUsername>
 <h3>Your name is: {{ name }}</h3>
+<code>{{ txtUsername.value | json }}</code>
