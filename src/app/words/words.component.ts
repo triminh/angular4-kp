@@ -30,6 +30,7 @@ export class WordsComponent implements OnInit {
     });
     this.newEn = '';
     this.newVn = '';
+    this.isShowForm = false;
   }
 
 }

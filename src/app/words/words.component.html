@@ -1,7 +1,10 @@
-<input placeholder="Vietnamese" [(ngModel)] = "newVn" />
-<input placeholder="English" [(ngModel)] = "newEn" />
-<br /><br />
-<button (click)="addWord();">Thêm từ mới</button>
+<div *ngIf="isShowForm">
+  <input placeholder="Vietnamese" [(ngModel)]="newVn" />
+  <input placeholder="English" [(ngModel)]="newEn" />
+  <br /><br />
+  <button (click)="addWord();">Thêm từ mới!</button>
+</div>
+<button (click)="isShowForm = true" *ngIf="!isShowForm">Thêm từ mới</button>
 <div *ngFor="let word of arrWords">
   <h4 [ngStyle]="{ color: word.memorized ? 'green' : 'red' }">
     {{ word.en }}
