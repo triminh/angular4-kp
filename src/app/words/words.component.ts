@@ -9,6 +9,7 @@ export class WordsComponent implements OnInit {
   newEn = '';
   newVn = '';
   isShowForm = false;
+  filterStatus = 'XEM_TAT_CA';
   arrWords = [
     { id: 1, en: 'action', vn: 'hành động', memorized: true },
     { id: 2, en: 'actor', vn: 'diễn viên', memorized: false },
@@ -39,4 +40,10 @@ export class WordsComponent implements OnInit {
     this.arrWords.splice(index, 1);
   }
 
+  getShowStatus(memorized: boolean) {
+    const dkXemTatCa = this.filterStatus === 'XEM_TAT_CA';
+    const dkXemDaNho = this.filterStatus === 'XEM_DA_NHO' && memorized;
+    const dkXemChuaNho = this.filterStatus === 'XEM_CHUA_NHO' && !memorized;
+    return dkXemTatCa || dkXemDaNho || dkXemChuaNho; 
+  }
 }
