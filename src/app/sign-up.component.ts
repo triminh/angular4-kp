@@ -8,6 +8,12 @@ template: `
     <input placeholder="Email" formControlName="email">
     <br><br>
     <input type="password" placeholder="Password" formControlName="password">
+    <br><br>
+    <div formGroupName="subject">
+        <label><input type="checkbox" name="NodeJs" formControlName="nodeJs">NodeJs</label>
+        <label><input type="checkbox" name="Angular" formControlName="angular">Angular</label>
+        <label><input type="checkbox" name="ReactJs" formControlName="reactJs">ReactJs</label>
+    </div>
     <br>
     <button>Submit</button>
 </form>
@@ -20,7 +26,12 @@ export class SignUpComponent {
     constructor() {
         this.formSignUp = new FormGroup({
             email: new FormControl(),
-            password: new FormControl
+            password: new FormControl(),
+            subject: new FormGroup({
+                nodeJs: new FormControl(),
+                angular: new FormControl(),
+                reactJs: new FormControl(),
+            }); 
         });
     }
     onSubmit() {
