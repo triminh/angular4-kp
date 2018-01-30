@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
 selector: 'app-sign-up',
@@ -15,8 +15,9 @@ template: `
         <label><input type="checkbox" name="ReactJs" formControlName="reactJs">ReactJs</label>
     </div>
     <br>
-    <button>Submit</button>
+    <button [disabled]="formSignUp.invalid">Submit</button>
 </form>
+<code> {{ formSignUp.controls.email.errors | json }} </code>
   `
 })
 
@@ -27,7 +28,7 @@ export class SignUpComponent implements OnInit{
 
     ngOnInit(): void {
          this.formSignUp = this.fb.group({
-            email: 'tri@gmail.com',
+            email: ['', [Validators.email, gmailValidator]],
             password: '',
             subject: this.fb.group({
                 nodeJs: true,
@@ -40,4 +41,10 @@ export class SignUpComponent implements OnInit{
     onSubmit() {
         console.log(this.formSignUp.value);
     }
+
+    function gmailValidator(formControl: FormControl) {
+        if(formControl.value.includes('@gmail.com')) {
+            return null;
+        }
+    return { gmail: true };
 }
